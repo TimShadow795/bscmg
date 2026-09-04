@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.S.C.M.G</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topo"></div>
+
+    <header>
+        <a href="#" class="logo" onclick="switchTab('about'); return false;">B.S.C.M.G</a>
+        <nav>
+            <button class="nav-link active" data-tab="about" onclick="switchTab('about')">About</button>
+            <button class="nav-link" data-tab="apply" onclick="switchTab('apply')">Apply</button>
+        </nav>
+        <div class="lang-wrap">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+                <option value="es">ES</option>
+                <option value="pt">PT</option>
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+                <option value="zh">中文</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="ar">AR</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div id="statusSection" class="status-wrap" style="display:none">
+            <div id="statusCard" class="status-card"></div>
+        </div>
+
+        <section id="tab-about" class="panel active">
+            <div class="hero">
+                <h1>B.S.C.M.G</h1>
+                <p class="hero-sub" data-i18n="subtitle">Private shredder group for Plane Crazy.</p>
+                <p class="hero-desc" data-i18n="heroDesc">Application only. No public invites.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-num">01</span>
+                    <h3 data-i18n="rule1Title">No leaks</h3>
+                    <p data-i18n="rule1Text">Techs, guides and invites stay inside. Leak = permanent ban.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-num">02</span>
+                    <h3 data-i18n="rule2Title">Shredder users only</h3>
+                    <p data-i18n="rule2Text">You need a real loaded shredder. Screenshots required.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-num">03</span>
+                    <h3 data-i18n="rule3Title">Private access</h3>
+                    <p data-i18n="rule3Text">Entry by application. Accepted members get the invite.</p>
+                </div>
+            </div>
+
+            <div class="about-block">
+                <h2 data-i18n="whatTitle">What is this</h2>
+                <p data-i18n="whatText">B.S.C.M.G (Banned Shredder Member Group) is a closed Discord for people who actually run shredders in Plane Crazy. Tech stays private. No random invites. No public channels.</p>
+            </div>
+
+            <div class="about-block">
+                <h2 data-i18n="serverTitle">Server</h2>
+                <ul class="info-list">
+                    <li data-i18n="info1">Private Discord — shredder pilots only</li>
+                    <li data-i18n="info2">Tech channels, builds, PvP discussion</li>
+                    <li data-i18n="info3">No public invite links</li>
+                    <li data-i18n="info4">Application review before join</li>
+                    <li data-i18n="info5">Leak = instant permanent ban</li>
+                </ul>
+            </div>
+
+            <div class="cta-row">
+                <button class="btn-primary" onclick="switchTab('apply')" data-i18n="gotoApply">Apply to join</button>
+            </div>
+        </section>
+
+        <section id="tab-apply" class="panel">
+            <div class="form-wrap" id="applySection">
+                <h2 data-i18n="applyTitle">Application</h2>
+                <p class="form-hint" data-i18n="applyDesc">Answer honestly. Fake answers get declined.</p>
+
+                <form id="applicationForm">
+                    <div class="field">
+                        <label data-i18n="q1">Will you not leak techs / guides?</label>
+                        <input type="text" id="q1" data-i18n-placeholder="typeAnswer" placeholder="Type your answer" required>
+                    </div>
+                    <div class="field">
+                        <label data-i18n="q2">Are you a shredder user?</label>
+                        <input type="text" id="q2" data-i18n-placeholder="typeAnswer" placeholder="Type your answer" required>
+                    </div>
+                    <div class="field">
+                        <label data-i18n="q3">Will you leak the server invite?</label>
+                        <input type="text" id="q3" data-i18n-placeholder="typeAnswer" placeholder="Type your answer" required>
+                    </div>
+                    <div class="field">
+                        <label data-i18n="q4">Your Discord</label>
+                        <input type="text" id="q4" data-i18n-placeholder="typeAnswer" placeholder="username or ID" required>
+                    </div>
+                    <div class="field">
+                        <label data-i18n="q5">Pictures of your loaded shredder</label>
+                        <div class="upload" id="uploadArea">
+                            <input type="file" id="images" accept="image/*" multiple>
+                            <div class="upload-ui">
+                                <span data-i18n="uploadText">Drop images or click</span>
+                                <small data-i18n="uploadHint">Max 3 · screenshots preferred</small>
+                            </div>
+                            <div class="previews" id="previewContainer"></div>
+                        </div>
+                        <textarea id="shredderDesc" data-i18n-placeholder="shredderDesc" placeholder="Short note about your shredder (optional)" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary full" data-i18n="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>B.S.C.M.G</span>
+        <span class="sep">·</span>
+        <span>Plane Crazy</span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
